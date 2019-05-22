@@ -4,7 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        gradlePluginPortal()
+//        gradlePluginPortal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
