@@ -10,6 +10,9 @@ public class WebAppInterface {
 
     /**
      * Instantiate the interface and set the context
+     *
+     * @param context
+     * @param furtherActions
      */
     public WebAppInterface(Context context, FurtherActions furtherActions) {
         mContext = context;
