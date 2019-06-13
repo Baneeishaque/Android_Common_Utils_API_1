@@ -1,21 +1,17 @@
 package ndk.utils_android1;
 
-import android.content.Context;
 import android.webkit.JavascriptInterface;
 
 public class WebAppInterface {
 
-    private Context mContext;
     private WebAppInterfaceFurtherActions webAppInterfaceFurtherActions;
 
     /**
      * Instantiate the interface and set the context
      *
-     * @param context
-     * @param webAppInterfaceFurtherActions
+     * @param webAppInterfaceFurtherActions FurtherActions interface instance
      */
-    public WebAppInterface(Context context, WebAppInterfaceFurtherActions webAppInterfaceFurtherActions) {
-        mContext = context;
+    public WebAppInterface(WebAppInterfaceFurtherActions webAppInterfaceFurtherActions) {
         this.webAppInterfaceFurtherActions = webAppInterfaceFurtherActions;
     }
 
