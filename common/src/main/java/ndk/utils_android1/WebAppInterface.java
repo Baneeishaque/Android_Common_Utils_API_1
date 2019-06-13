@@ -6,21 +6,21 @@ import android.webkit.JavascriptInterface;
 public class WebAppInterface {
 
     private Context mContext;
-    private FurtherActions mfurtherActions;
+    private WebAppInterfaceFurtherActions webAppInterfaceFurtherActions;
 
     /**
      * Instantiate the interface and set the context
      *
      * @param context
-     * @param furtherActions
+     * @param webAppInterfaceFurtherActions
      */
-    public WebAppInterface(Context context, FurtherActions furtherActions) {
+    public WebAppInterface(Context context, WebAppInterfaceFurtherActions webAppInterfaceFurtherActions) {
         mContext = context;
-        mfurtherActions = furtherActions;
+        this.webAppInterfaceFurtherActions = webAppInterfaceFurtherActions;
     }
 
     @JavascriptInterface
     public void doActions() {
-        mfurtherActions.furtherActions();
+        webAppInterfaceFurtherActions.doActions();
     }
 }

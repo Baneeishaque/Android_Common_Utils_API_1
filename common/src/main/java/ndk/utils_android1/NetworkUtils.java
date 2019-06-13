@@ -1,12 +1,11 @@
 package ndk.utils_android1;
 
-import org.apache.http.client.ClientProtocolException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class NetworkUtils {
@@ -23,6 +22,9 @@ public class NetworkUtils {
             HttpURLConnection connection = (HttpURLConnection) new URL(URL).openConnection();
             //Set methods and timeouts
             connection.setRequestMethod("GET");
+
+            // TODO : Connection With Read Timeout
+            // TODO : Connection With Connection Timeout
 //            connection.setReadTimeout(READ_TIMEOUT);
 //            connection.setConnectTimeout(CONNECTION_TIMEOUT);
 
@@ -43,14 +45,12 @@ public class NetworkUtils {
             //Set our result equal to our stringBuilder
             return new String[]{"0", stringBuilder.toString()};
 
-        } catch (UnsupportedEncodingException e) {
-            return new String[]{"1", "UnsupportedEncodingException : " + e.getLocalizedMessage()};
-        } catch (ClientProtocolException e) {
-            return new String[]{"1", "ClientProtocolException : " + e.getLocalizedMessage()};
+        } catch (ProtocolException e) {
+            return new String[]{"1", "ProtocolException : " + e.getLocalizedMessage()};
+        } catch (MalformedURLException e) {
+            return new String[]{"1", "MalformedURLException : " + e.getLocalizedMessage()};
         } catch (IOException e) {
             return new String[]{"1", "IOException : " + e.getLocalizedMessage()};
-        } catch (Exception e) {
-            return new String[]{"1", "Exception : " + e.getLocalizedMessage()};
         }
     }
 }
