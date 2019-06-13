@@ -13,13 +13,13 @@ public class NetworkUtils {
     //TODO : Can ping function
     //TODO : No connection Snackbar with Retry option
 
-    public static String[] performHTTPGET(String URL) {
+    public static String[] performHttpGet(String url) {
 
         String inputLine;
 
         try {
             //Create a connection
-            HttpURLConnection connection = (HttpURLConnection) new URL(URL).openConnection();
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             //Set methods and timeouts
             connection.setRequestMethod("GET");
 

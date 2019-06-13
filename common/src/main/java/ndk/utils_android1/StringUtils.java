@@ -6,7 +6,7 @@ public class StringUtils {
         return removeSymbol(string, "\"");
     }
 
-    private static String removeSymbol(String string, String symbol) {
+    public static String removeSymbol(String string, String symbol) {
         return string.replace(symbol, "");
     }
 }
