@@ -12,5 +12,4 @@ public class ActivityUtils {
     public static void startActivity(Context activityContext, Intent intent) {
         activityContext.startActivity(intent);
     }
-
 }

@@ -46,10 +46,15 @@ public class NetworkUtils {
             return new String[]{"0", stringBuilder.toString()};
 
         } catch (ProtocolException e) {
+
             return new String[]{"1", "ProtocolException : " + e.getLocalizedMessage()};
+
         } catch (MalformedURLException e) {
+
             return new String[]{"1", "MalformedURLException : " + e.getLocalizedMessage()};
+
         } catch (IOException e) {
+
             return new String[]{"1", "IOException : " + e.getLocalizedMessage()};
         }
     }
