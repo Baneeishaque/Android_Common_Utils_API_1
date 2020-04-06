@@ -1,12 +1,15 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+
+    compileSdkVersion 29
 
     defaultConfig {
+
         //noinspection MinSdkTooLow
         minSdkVersion 1
-        targetSdkVersion 28
+        targetSdkVersion 29
+
         versionCode 1
         versionName "1.0"
 
@@ -14,14 +17,18 @@ android {
     }
 
     buildTypes {
+
         release {
-            minifyEnabled false
+
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
+
+    testImplementation 'junit:junit:4.13'
 }
