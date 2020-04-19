@@ -7,6 +7,7 @@ public class StringUtils {
     }
 
     public static String removeSymbol(String string, String symbol) {
+
         return string.replace(symbol, "");
     }
 }
