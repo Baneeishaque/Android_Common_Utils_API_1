@@ -12,6 +12,7 @@ public class WebAppInterface {
      * @param webAppInterfaceFurtherActions FurtherActions interface instance
      */
     public WebAppInterface(WebAppInterfaceFurtherActions webAppInterfaceFurtherActions) {
+
         this.webAppInterfaceFurtherActions = webAppInterfaceFurtherActions;
     }
 
