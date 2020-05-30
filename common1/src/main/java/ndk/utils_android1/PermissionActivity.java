@@ -46,7 +46,7 @@ public abstract class PermissionActivity extends ContextActivity {
         }
     }
 
-    protected abstract int configurePermissionRequiredMessage();
+    protected abstract String configurePermissionRequiredMessage();
 
     protected abstract String configurePermission();
 
