@@ -25,32 +25,10 @@ public abstract class TelephonyCallActivity extends TelephonyCallPermissionActiv
 
     private void executePermissionProcedure(Context context, Intent callIntent) {
 
-        getRuntimePermission(new PermissionGrantedActions() {
+        getRuntimePermission(() -> context.startActivity(callIntent), () -> context.startActivity(callIntent), () -> {
 
-            @SuppressLint("MissingPermission")
-            @Override
-            public void configurePermissionGrantedActions() {
-
-                context.startActivity(callIntent);
-            }
-
-        }, new PermissionAcceptedActions() {
-
-            @SuppressLint("MissingPermission")
-            @Override
-            public void configurePermissionAcceptedActions() {
-
-                context.startActivity(callIntent);
-            }
-
-        }, new PermissionDeniedActions() {
-
-            @Override
-            public void configurePermissionDeniedActions() {
-
-                Toast.makeText(activityContext, R.string.call_permission_required, Toast.LENGTH_SHORT).show();
-                executePermissionProcedure(context, callIntent);
-            }
+            Toast.makeText(activityContext, R.string.call_permission_required, Toast.LENGTH_SHORT).show();
+            executePermissionProcedure(context, callIntent);
         });
     }
 }
