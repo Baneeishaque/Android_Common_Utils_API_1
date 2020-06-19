@@ -21,7 +21,7 @@ public abstract class PermissionActivity extends ContextActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             {
-                if (ContextCompat.checkSelfPermission(activityContext, configurePermission()) != PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(currentActivityContext, configurePermission()) != PackageManager.PERMISSION_GRANTED) {
 
                     if (shouldShowRequestPermissionRationale(configurePermission())) {
 
@@ -32,7 +32,7 @@ public abstract class PermissionActivity extends ContextActivity {
                         Toast.makeText(this, configurePermissionRequiredMessage(), Toast.LENGTH_SHORT).show();
                     }
 
-                    ActivityCompat.requestPermissions((AppCompatActivity) activityContext, new String[]{configurePermission()}, configurePermissionRequestCode());
+                    ActivityCompat.requestPermissions((AppCompatActivity) currentActivityContext, new String[]{configurePermission()}, configurePermissionRequestCode());
 
                 } else {
 

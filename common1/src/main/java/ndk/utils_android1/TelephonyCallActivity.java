@@ -27,7 +27,7 @@ public abstract class TelephonyCallActivity extends TelephonyCallPermissionActiv
 
         getRuntimePermission(() -> context.startActivity(callIntent), () -> context.startActivity(callIntent), () -> {
 
-            Toast.makeText(activityContext, R.string.call_permission_required, Toast.LENGTH_SHORT).show();
+            Toast.makeText(currentActivityContext, R.string.call_permission_required, Toast.LENGTH_SHORT).show();
             executePermissionProcedure(context, callIntent);
         });
     }
