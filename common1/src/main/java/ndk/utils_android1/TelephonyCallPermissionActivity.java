@@ -7,19 +7,19 @@ public abstract class TelephonyCallPermissionActivity extends PermissionActivity
     private static final int CALL_PERMISSION_REQUEST_CODE = 1;
 
     @Override
-    protected String configurePermissionRequiredMessage() {
+    public String configurePermissionRequiredMessage() {
 
         return getString(R.string.call_permission_required);
     }
 
     @Override
-    protected String configurePermission() {
+    public String configurePermission() {
 
         return Manifest.permission.CALL_PHONE;
     }
 
     @Override
-    protected int configurePermissionRequestCode() {
+    public int configurePermissionRequestCode() {
 
         return CALL_PERMISSION_REQUEST_CODE;
     }

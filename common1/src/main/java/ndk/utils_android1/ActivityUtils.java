@@ -5,9 +5,9 @@ import android.content.Intent;
 
 public class ActivityUtils {
 
-    public static void startActivity(Context activityContext, Intent intent) {
+    public static void startActivity(Context currentActivityContext, Intent nextActivityIntent) {
 
-        activityContext.startActivity(intent);
+        currentActivityContext.startActivity(nextActivityIntent);
     }
 
     public static void startActivity(Context activityContext, Class activity) {

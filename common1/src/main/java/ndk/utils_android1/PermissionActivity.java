@@ -46,11 +46,11 @@ public abstract class PermissionActivity extends ContextActivity {
         }
     }
 
-    protected abstract String configurePermissionRequiredMessage();
+    public abstract String configurePermissionRequiredMessage();
 
-    protected abstract String configurePermission();
+    public abstract String configurePermission();
 
-    protected abstract int configurePermissionRequestCode();
+    public abstract int configurePermissionRequestCode();
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
