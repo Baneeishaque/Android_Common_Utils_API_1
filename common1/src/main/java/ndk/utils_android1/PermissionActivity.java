@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public abstract class PermissionActivity extends ContextActivity {
+public abstract class PermissionActivity extends ActivityWithContexts {
 
     PermissionAcceptedActions permissionAcceptedActions;
     PermissionDeniedActions permissionDeniedActions;
