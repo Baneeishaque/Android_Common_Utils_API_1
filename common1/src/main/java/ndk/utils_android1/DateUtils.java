@@ -5,7 +5,6 @@ import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -27,13 +26,15 @@ public class DateUtils {
         return mysqlDateFormat.format(new Date());
     }
 
-    //TODO : Use Apache Commons lang API
     public static Date addDays(Date date, int days) {
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, days); //minus number would decrement the days
-        return cal.getTime();
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(date);
+//        //minus number would decrement the days
+//        cal.add(Calendar.DATE, days);
+//        return cal.getTime();
+
+        return org.apache.commons.lang3.time.DateUtils.addDays(date, days);
     }
 
     public static String dateToMysqlDateString(Date date) {
