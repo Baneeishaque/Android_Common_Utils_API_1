@@ -166,8 +166,7 @@ public class NetworkUtils {
                                 break;
 
                             case 4: // finish and switch with extras
-                                ActivityUtils.startActivityWithStringExtrasAndFinish(currentActivity,
-                                        toSwitchActivity, nextClassExtras);
+                                ActivityUtils.startActivityWithStringExtrasAndFinish(currentActivity, toSwitchActivity, nextClassExtras);
                                 break;
 
                             case 5: // No Action
