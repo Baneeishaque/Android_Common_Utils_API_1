@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.Arrays;
 
-public class ExceptionUtils {
+public class ExceptionUtils1 {
 
     public static String getExceptionDetails(Exception e) {
 

@@ -10,7 +10,7 @@ import com.github.kimkevin.cachepot.CachePot;
 
 import java.util.Objects;
 
-public class ActivityUtils {
+public class ActivityUtils1 {
 
     public static void startActivityForIntent(Context currentActivityContext, Intent nextActivityIntent) {
 

@@ -154,7 +154,7 @@ public class NetworkUtils {
                         switch (actionFlag) {
 
                             case 1: // finish and switch
-                                ActivityUtils.startActivityForClassWithFinish(currentActivity, toSwitchActivity);
+                                ActivityUtils1.startActivityForClassWithFinish(currentActivity, toSwitchActivity);
                                 break;
 
                             case 2: // clear fields
@@ -166,7 +166,7 @@ public class NetworkUtils {
                                 break;
 
                             case 4: // finish and switch with extras
-                                ActivityUtils.startActivityWithStringExtrasAndFinish(currentActivity, toSwitchActivity, nextClassExtras);
+                                ActivityUtils1.startActivityWithStringExtrasAndFinish(currentActivity, toSwitchActivity, nextClassExtras);
                                 break;
 
                             case 5: // No Action
@@ -214,7 +214,7 @@ public class NetworkUtils {
 
     public static void checkNetworkThenStartActivityWithStringExtras(Context context, Class activity, Pair[] extras, boolean forResultFlag, int requestCode) {
         if (isOnline(context)) {
-            ActivityUtils.startActivityForClassWithStringExtras(context, activity, extras);
+            ActivityUtils1.startActivityForClassWithStringExtras(context, activity, extras);
         } else {
             ToastUtils.longToast(context, "Internet is unavailable");
         }
@@ -222,7 +222,7 @@ public class NetworkUtils {
 
     public static void checkNetworkThenStartActivity(Context context, Class activity) {
         if (isOnline(context)) {
-            ActivityUtils.startActivityForClass(context, activity);
+            ActivityUtils1.startActivityForClass(context, activity);
         } else {
             ToastUtils.offlineToast(context);
         }
@@ -291,7 +291,7 @@ public class NetworkUtils {
 
         if (isOnline(activityContext)) {
 
-            ActivityUtils.startActivityForClassWithStringExtras(activityContext, activity, stringExtras);
+            ActivityUtils1.startActivityForClassWithStringExtras(activityContext, activity, stringExtras);
 
         } else {
 
@@ -302,7 +302,7 @@ public class NetworkUtils {
     public static void startActivityWithNetworkStringExtrasAndRequestCode(Context activityContext, Class activity, Pair[] stringExtras, int requestCode) {
 
         if (isOnline(activityContext)) {
-            ActivityUtils.startActivityForResultWithStringExtras(activityContext, activity, stringExtras, requestCode);
+            ActivityUtils1.startActivityForResultWithStringExtras(activityContext, activity, stringExtras, requestCode);
         } else {
             ToastUtils.longToast(activityContext, "Internet is unavailable...");
         }
