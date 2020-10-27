@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
@@ -16,6 +20,7 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class UpdateUtils {
 
@@ -86,5 +91,42 @@ public class UpdateUtils {
         } catch (IOException e) {
             return new String[]{"1", "IOException : " + e.getLocalizedMessage()};
         }
+    }
+
+    public static FireStoreRequestResponse getServerVersionFireStore(FirebaseFirestore firebaseFirestoreDb, String applicationName, Context applicationContext) {
+
+        FireStoreRequestResponse fireStoreRequestResponse = new FireStoreRequestResponse(2, Map.of(), new Exception());
+
+        DocumentReference documentReference = firebaseFirestoreDb.collection("configuration").document("1");
+
+        documentReference.get().addOnCompleteListener(task -> {
+
+            if (task.isSuccessful()) {
+
+                DocumentSnapshot document = task.getResult();
+                if (document != null && document.exists()) {
+
+                    LogUtils.debug(applicationName, "DocumentSnapshot data: " + document.getData());
+
+                    fireStoreRequestResponse.setStatus(0);
+                    fireStoreRequestResponse.setData(document.getData());
+
+                } else {
+
+                    LogUtils.debug(applicationName, "No such document...");
+
+                    fireStoreRequestResponse.setStatus(1);
+                }
+            } else {
+
+                ExceptionUtils1.handleExceptionOnGui(applicationContext, applicationName, task.getException());
+
+                fireStoreRequestResponse.setStatus(-1);
+                fireStoreRequestResponse.setException(task.getException());
+            }
+        });
+        while (fireStoreRequestResponse.getData().isEmpty()) {
+        }
+        return fireStoreRequestResponse;
     }
 }
