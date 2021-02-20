@@ -106,5 +106,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
 
     implementation 'com.github.kimkevin:cachepot:1.2.0'
-    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'org.jetbrains:annotations:20.1.0'
 }
