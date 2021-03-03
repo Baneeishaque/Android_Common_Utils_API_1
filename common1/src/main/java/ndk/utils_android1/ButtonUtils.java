@@ -1,10 +1,6 @@
 package ndk.utils_android1;
 
-import android.view.View;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Calendar;
 
 public class ButtonUtils {
@@ -29,12 +25,4 @@ public class ButtonUtils {
 
         buttonDate.setText(DateUtils.normalDateTimeFormatWords.format(calendar.getTime()));
     }
-
-    public static Button associateClickAction(AppCompatActivity currentAppCompatActivity, int buttonId, View.OnClickListener onClickListener) {
-
-        Button button = currentAppCompatActivity.findViewById(buttonId);
-        button.setOnClickListener(onClickListener);
-        return button;
-    }
-
 }
