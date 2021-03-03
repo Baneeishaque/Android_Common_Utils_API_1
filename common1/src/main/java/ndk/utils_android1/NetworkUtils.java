@@ -33,8 +33,6 @@ import static android.graphics.Color.RED;
 
 public class NetworkUtils {
 
-    private static FurtherActions furtherActions;
-
     public static boolean isOnline(Context context) {
 
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -88,11 +86,6 @@ public class NetworkUtils {
         } else {
             ToastUtils.offlineToast(context);
         }
-    }
-
-    public interface FurtherActions {
-
-        void onSuccess();
     }
 
     public static void displayNetworkActionResponse(String tag, String[] networkActionResponseArray) {
