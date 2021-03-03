@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 
 public class Permission_Utils {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
+    public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
 
     //    @Override
     public void onRequestPermissionsResult(int requestCode,
