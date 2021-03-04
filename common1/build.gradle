@@ -32,10 +32,6 @@ android {
         }
     }
     
-    lintOptions {
-        abortOnError false
-    }
-
     // Specifies flavor dimension.
     flavorDimensions "relevence"
     productFlavors {
