@@ -1,7 +1,5 @@
 package ndk.utils_android1;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
 
 public class Permission_Utils {

@@ -5,7 +5,7 @@ android {
 
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
-    useLibrary  'org.apache.http.legacy'
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
 
@@ -31,7 +31,7 @@ android {
             debuggable true
         }
     }
-    
+
     // Specifies flavor dimension.
     flavorDimensions "relevence"
     productFlavors {

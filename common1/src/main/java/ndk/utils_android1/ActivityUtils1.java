@@ -3,8 +3,6 @@ package ndk.utils_android1;
 import android.content.Context;
 import android.content.Intent;
 
-import java.util.Objects;
-
 public class ActivityUtils1 {
 
     public static void startActivityForIntent(Context currentActivityContext, Intent nextActivityIntent) {

@@ -16,7 +16,6 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class UpdateUtils {
 
