@@ -54,7 +54,7 @@ public class UpdateUtils {
 
             ResponseHandler<String> basicResponseHandler = new BasicResponseHandler();
             networkActionResponse = defaultHttpClient.execute(httpPost, basicResponseHandler);
-            LogUtils.debug(applicationName, "Network Action Response : " + networkActionResponse);
+            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse);
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {
@@ -76,7 +76,7 @@ public class UpdateUtils {
 
             ResponseHandler<String> basicResponseHandler = new BasicResponseHandler();
             networkActionResponse = defaultHttpClient.execute(httpPost, basicResponseHandler);
-            LogUtils.debug(applicationName, "Network Action Response : " + networkActionResponse);
+            LogUtils1.debug(applicationName, "Network Action Response : " + networkActionResponse);
             return new String[]{"0", networkActionResponse};
 
         } catch (UnsupportedEncodingException e) {

@@ -9,7 +9,7 @@ public class JSONUtils {
 
     public static void printIndexedJSONArrayWithLength(JSONArray jsonArray, String jsonArrayName, String applicationName, Context context) {
 
-        LogUtils.debug(applicationName, "Length of " + jsonArrayName + " : " + jsonArray.length());
+        LogUtils1.debug(applicationName, "Length of " + jsonArrayName + " : " + jsonArray.length());
         printIndexedJSONArray(jsonArray, jsonArrayName, applicationName, context);
     }
 
@@ -29,6 +29,6 @@ public class JSONUtils {
             }
         }
 
-        LogUtils.debug(applicationName, "Indexed " + jsonArrayName + " : " + result);
+        LogUtils1.debug(applicationName, "Indexed " + jsonArrayName + " : " + result);
     }
 }

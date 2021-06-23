@@ -117,7 +117,7 @@ public class DateUtils {
 
         } catch (ParseException e) {
 
-            ToastUtils.longToast(context, "Date Conversion Error");
+            ToastUtils1.longToast(context, "Date Conversion Error");
             return new Date();
         }
     }
@@ -131,7 +131,7 @@ public class DateUtils {
 
         } catch (ParseException e) {
 
-            ToastUtils.longToast(context, "Date Conversion Error");
+            ToastUtils1.longToast(context, "Date Conversion Error");
             return new Date();
         }
     }

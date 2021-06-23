@@ -7,7 +7,7 @@ import android.content.Context;
 import android.os.Build;
 import android.view.View;
 
-public class ProgressBarUtils {
+public class ProgressBarUtils1 {
 
     /**
      * Shows the progress UI and hides the login form.

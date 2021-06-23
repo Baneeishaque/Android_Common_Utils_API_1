@@ -13,23 +13,35 @@ public class ExceptionUtils1 {
                 + "\n" + "Exception Class : " + e.getClass()
                 + "\n" + "Exception Cause : " + e.getCause()
                 + "\n" + "Exception StackTrace : " + Arrays.toString(e.getStackTrace())
-                + "\n" + "Exception : " + e.toString();
-
+                + "\n" + "Exception : " + e;
     }
 
-    public static void handleException(boolean isGuiPresent, Context applicationContext, final String tag, Exception exception) {
+    public static void handleException(boolean isGuiPresent, Context applicationContext, final String tag, String exceptionDetails) {
 
         if (isGuiPresent) {
 
             //TODO : Short Toast
-            ToastUtils.longToast(applicationContext, "Error...");
-        }
+            ToastUtils1.longToast(applicationContext, "Error...");
+            LogUtils1.debugOnGui(exceptionDetails, applicationContext, tag);
 
-        LogUtils.debug(tag, getExceptionDetails(exception));
+        } else {
+
+            LogUtils1.debug(tag, exceptionDetails);
+        }
+    }
+
+    public static void handleException(boolean isGuiPresent, Context applicationContext, final String tag, Exception exception) {
+
+        handleException(isGuiPresent, applicationContext, tag, getExceptionDetails(exception));
     }
 
     public static void handleExceptionOnGui(Context applicationContext, final String tag, Exception exception) {
 
-        handleException(true, applicationContext, tag, exception);
+        handleException(true, applicationContext, tag, getExceptionDetails(exception));
+    }
+
+    public static void handleExceptionOnGui(Context applicationContext, final String tag, String exceptionDetails) {
+
+        handleException(true, applicationContext, tag, exceptionDetails);
     }
 }

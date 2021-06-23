@@ -20,7 +20,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Arrays;
 
-public class NetworkUtils {
+public class NetworkUtils1 {
 
     public static boolean isOnline(Context context) {
 
@@ -28,7 +28,7 @@ public class NetworkUtils {
         NetworkInfo netInfo = cm != null ? cm.getActiveNetworkInfo() : null;
         if (!(netInfo != null && netInfo.isConnectedOrConnecting())) {
 
-            ToastUtils.longToast(context, "Internet is unavailable");
+            ToastUtils1.longToast(context, "Internet is unavailable");
         }
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
@@ -65,7 +65,7 @@ public class NetworkUtils {
     // TODO : Improve to handle exception objects
     public static void displayFriendlyExceptionMessage(Context context, String networkExceptionMessage) {
         if (networkExceptionMessage.contains("IOException")) {
-            ToastUtils.longToast(context, "Check your network connection...");
+            ToastUtils1.longToast(context, "Check your network connection...");
         }
     }
 
@@ -73,13 +73,13 @@ public class NetworkUtils {
         if (isOnline(context)) {
             ActivityUtils1.startActivityForClass(context, activity);
         } else {
-            ToastUtils.offlineToast(context);
+            ToastUtils1.offlineToast(context);
         }
     }
 
     public static void displayNetworkActionResponse(String tag, String[] networkActionResponseArray) {
 
-        LogUtils.debug(tag, "Network Action Response Array : " + Arrays.toString(networkActionResponseArray));
+        LogUtils1.debug(tag, "Network Action Response Array : " + Arrays.toString(networkActionResponseArray));
     }
 
     //TODO : Can ping function

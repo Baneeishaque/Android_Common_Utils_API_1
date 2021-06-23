@@ -3,7 +3,7 @@ package ndk.utils_android1;
 import android.content.Context;
 import android.util.Log;
 
-public class LogUtils {
+public class LogUtils1 {
 
     public static void debug(String tag, String message) {
 
@@ -17,7 +17,7 @@ public class LogUtils {
 
         if (BuildConfig.DEBUG) {
 
-            ToastUtils.longToast(currentApplicationContext, message);
+            ToastUtils1.longToast(currentApplicationContext, message);
         }
         debug(applicationTag, message);
     }
