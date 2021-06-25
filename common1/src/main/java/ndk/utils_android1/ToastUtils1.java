@@ -5,9 +5,9 @@ import android.widget.Toast;
 
 public class ToastUtils1 {
 
-    public static void longToast(Context context, String message) {
+    public static void longToast(Context applicationContext, String message) {
 
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show();
     }
 
     public static void shortToast(Context context, String message) {
