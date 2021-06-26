@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class DateUtils {
+public class DateUtils1 {
 
     public static SimpleDateFormat mysqlDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
     public static SimpleDateFormat normalDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.UK);
