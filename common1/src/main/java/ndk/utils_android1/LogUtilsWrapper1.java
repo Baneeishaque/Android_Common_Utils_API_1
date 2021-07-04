@@ -6,14 +6,14 @@ public abstract class LogUtilsWrapper1 {
 
     public void debug(String message) {
 
-        LogUtils1.debug(configureTAG(), message);
+        LogUtils1.debug(configureApplicationTag(), message);
     }
 
-    public abstract String configureTAG();
+    public abstract String configureApplicationTag();
 
     public void debugOnGui(String message) {
 
-        LogUtils1.debugOnGui(message, configureCurrentApplicationContext(), configureTAG());
+        LogUtils1.debugOnGui(message, configureCurrentApplicationContext(), configureApplicationTag());
     }
 
     public abstract Context configureCurrentApplicationContext();
