@@ -7,6 +7,16 @@ public abstract class ApiUtilsWithHttpApiFolderAndFileExtension1 {
         return getAddressProtocol() + "://" + getServerAddress() + "/" + getServerApplicationFolder() + "/" + getServerApplicationHttpApiFolder() + "/" + apiMethodName + getFileExtension();
     }
 
+    public String getImageUrl(String imageFolderUnderServerApplicationFolder, String imageNameWithExtension) {
+
+        return getAddressProtocol() + "://" + getServerAddress() + "/" + getServerApplicationFolder() + "/" + imageFolderUnderServerApplicationFolder + "/" + imageNameWithExtension;
+    }
+
+    public String getPngImageUrl(String imageFolderUnderServerApplicationFolder, String imageName) {
+
+        return getImageUrl(imageFolderUnderServerApplicationFolder, imageName + ".png");
+    }
+
     protected abstract String getServerApplicationHttpApiFolder();
 
     protected abstract String getFileExtension();

@@ -1,45 +1,43 @@
 package ndk.utils_android1;
 
-import android.content.Context;
-import android.util.Log;
+import org.javatuples.Pair;
+import org.javatuples.Triplet;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
 
 public class DateUtils1 {
 
-    public static SimpleDateFormat mysqlDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
+    public static SimpleDateFormat mySqlDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
     public static SimpleDateFormat normalDateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.UK);
-    public static SimpleDateFormat normalDateFormatWords = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.UK);
-    public static SimpleDateFormat mysqlDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.UK);
+    public static SimpleDateFormat normalDateInWordsFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.UK);
+    public static SimpleDateFormat mySqlDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.UK);
     public static SimpleDateFormat normalDateTimeFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.UK);
     public static SimpleDateFormat normalDateTimeShortYearFormat = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.UK);
     public static SimpleDateFormat normalDateShortYearFormat = new SimpleDateFormat("dd-MM-yy", Locale.UK);
-    public static SimpleDateFormat normalDateTimeFormatWords = new SimpleDateFormat("EEE, MMM dd, yyyy HH:mm", Locale.UK);
+    public static SimpleDateFormat normalDateTimeInWordsFormat = new SimpleDateFormat("EEE, MMM dd, yyyy HH:mm", Locale.UK);
     public static SimpleDateFormat normalStrippedDateFormat = new SimpleDateFormat("MMM dd", Locale.UK);
 
-    public static String getCurrentDateStringInMysqlFormat() {
+    public static String getCurrentDateInMySqlDateString() {
 
-        return mysqlDateFormat.format(new Date());
+        return mySqlDateFormat.format(new Date());
     }
 
     public static Date addDays(Date date, int days) {
 
-//        Calendar cal = Calendar.getInstance();
-//        cal.setTime(date);
-//        //minus number would decrement the days
-//        cal.add(Calendar.DATE, days);
-//        return cal.getTime();
-
         return org.apache.commons.lang3.time.DateUtils.addDays(date, days);
     }
 
-    public static String dateToMysqlDateString(Date date) {
+    public static String dateToMySqlDateString(Date date) {
 
-        return mysqlDateFormat.format(date);
+        return mySqlDateFormat.format(date);
+    }
+
+    public static String dateTimeToCustomDateTimeString(Date date, SimpleDateFormat customDateTimeFormat) {
+
+        return customDateTimeFormat.format(date);
     }
 
     public static String dateToNormalDateString(Date date) {
@@ -47,96 +45,155 @@ public class DateUtils1 {
         return normalDateFormat.format(date);
     }
 
-    public static String mysqlDateStringToDateString(String mysql_date) {
-
-        try {
-
-            return normalDateFormat.format(Objects.requireNonNull(normalDateFormat.parse(mysql_date)));
-
-        } catch (ParseException e) {
-
-            return normalDateFormat.format(new Date());
-        }
-    }
-
-    public static String getCurrentDateStringInNormalFormat() {
+    public static String getCurrentDateInNormalDateFormat() {
 
         return normalDateFormat.format(new Date());
     }
 
-    public static String getTomorrowDateStringInNormalFormat() {
+    public static String getTomorrowDateInNormalDateFormat() {
 
         return normalDateFormat.format(addDays(new Date(), 1));
     }
 
-    public static String normalDateStringToMysqlDateString(String normalDate, String applicationName) {
+    public static org.javatuples.Pair<Boolean, String> normalDateStringToMySqlDateString(String normalDateString) {
 
         try {
 
-            return mysqlDateFormat.format(Objects.requireNonNull(normalDateFormat.parse(normalDate)));
+            Date normalDate = normalDateFormat.parse(normalDateString);
+            if (normalDate != null) {
 
-        } catch (ParseException e) {
+                return org.javatuples.Pair.with(true, mySqlDateFormat.format(normalDate));
 
-            Log.d(applicationName, "Unable to convert Normal Date String " + normalDate + " to MySQL Date String, Error : " + e.getLocalizedMessage());
-            return mysqlDateFormat.format(new Date());
+            } else {
+
+                return org.javatuples.Pair.with(false, "Normal Date is NULL");
+            }
+        } catch (ParseException parseException) {
+
+            return org.javatuples.Pair.with(false, ExceptionUtils1.getExceptionDetails(parseException));
         }
     }
 
-    public static String normalDateTimeWordsStringToMysqlDateTimeString(String normalDateTimeWords, String applicationName) {
+    public static org.javatuples.Pair<Boolean, String> normalDateTimeInWordsStringToMysqlDateTimeString(String normalDateTimeInWordsString) {
 
         try {
 
-            return mysqlDateTimeFormat.format(Objects.requireNonNull(normalDateTimeFormatWords.parse(normalDateTimeWords)));
+            Date normalDateTimeInWords = normalDateTimeInWordsFormat.parse(normalDateTimeInWordsString);
+            if (normalDateTimeInWords != null) {
 
-        } catch (ParseException e) {
+                return org.javatuples.Pair.with(true, mySqlDateTimeFormat.format(normalDateTimeInWords));
 
-            Log.d(applicationName, "Unable to convert Normal Date Time Words String " + normalDateTimeWords + " to MySQL Date Time String, Error : " + e.getLocalizedMessage());
-            return mysqlDateTimeFormat.format(new Date());
+            } else {
+
+                return org.javatuples.Pair.with(false, "Normal DateTimeInWords is NULL");
+            }
+        } catch (ParseException parseException) {
+
+            return org.javatuples.Pair.with(false, ExceptionUtils1.getExceptionDetails(parseException));
         }
     }
 
-    public static String mysqlDateStringToNormalDateString(String mysqlDate, String applicationName) {
+    public static Pair<Boolean, String> mySqlDateStringToNormalDateString(String mySqlDateString) {
 
         try {
 
-            return normalDateFormat.format(Objects.requireNonNull(mysqlDateFormat.parse(mysqlDate)));
+            Date mySqlDate = mySqlDateFormat.parse(mySqlDateString);
+            if (mySqlDate != null) {
 
-        } catch (ParseException e) {
+                return org.javatuples.Pair.with(true, normalDateFormat.format(mySqlDate));
 
-            Log.d(applicationName, "Unable to convert MySQL Date String " + mysqlDate + " to Normal Date String, Error : " + e.getLocalizedMessage());
-            return normalDateFormat.format(new Date());
+            } else {
+
+                return org.javatuples.Pair.with(false, "MySQL Date is NULL");
+            }
+        } catch (ParseException parseException) {
+
+            return org.javatuples.Pair.with(false, ExceptionUtils1.getExceptionDetails(parseException));
         }
     }
 
-    public static Date mysqlDateStringToDate(String mysqlDate, Context context, String applicationName) {
+    public static Pair<Boolean, String> mySqlDateTimeStringToNormalDateTimeString(String mySqlDateTimeString) {
 
         try {
 
-            Log.d(applicationName, Objects.requireNonNull(mysqlDateFormat.parse(mysqlDate)).toString());
-            return mysqlDateFormat.parse(mysqlDate);
+            Date mySqlDateTime = mySqlDateTimeFormat.parse(mySqlDateTimeString);
+            if (mySqlDateTime != null) {
 
-        } catch (ParseException e) {
+                return org.javatuples.Pair.with(true, normalDateTimeFormat.format(mySqlDateTime));
 
-            ToastUtils1.longToast(context, "Date Conversion Error");
-            return new Date();
+            } else {
+
+                return org.javatuples.Pair.with(false, "MySQL DateTime is NULL");
+            }
+        } catch (ParseException parseException) {
+
+            return org.javatuples.Pair.with(false, ExceptionUtils1.getExceptionDetails(parseException));
         }
     }
 
-    public static Date normalDateStringToDate(String normalDate, Context context, String applicationName) {
+    public static Pair<Boolean, String> mySqlDateTimeStringToCustomDateTimeString(String mySqlDateTimeString, SimpleDateFormat customDateTimeFormat) {
 
         try {
 
-            Log.d(applicationName, Objects.requireNonNull(normalDateFormat.parse(normalDate)).toString());
-            return normalDateFormat.parse(normalDate);
+            Date mySqlDateTime = mySqlDateTimeFormat.parse(mySqlDateTimeString);
+            if (mySqlDateTime != null) {
 
-        } catch (ParseException e) {
+                return org.javatuples.Pair.with(true, customDateTimeFormat.format(mySqlDateTime));
 
-            ToastUtils1.longToast(context, "Date Conversion Error");
-            return new Date();
+            } else {
+
+                return org.javatuples.Pair.with(false, "MySQL DateTime is NULL");
+            }
+        } catch (ParseException parseException) {
+
+            return org.javatuples.Pair.with(false, ExceptionUtils1.getExceptionDetails(parseException));
+        }
+    }
+
+    public static Triplet<Boolean, Date, String> mySqlDateTimeStringToCustomDateTime(String mySqlDateTimeString, SimpleDateFormat customDateTimeFormat) {
+
+        try {
+            Date mySqlDateTime = mySqlDateTimeFormat.parse(mySqlDateTimeString);
+            if (mySqlDateTime != null) {
+
+                return org.javatuples.Triplet.with(true, customDateTimeFormat.parse(customDateTimeFormat.format(mySqlDateTime)), "");
+
+            } else {
+
+                return org.javatuples.Triplet.with(false, customDateTimeFormat.parse(customDateTimeFormat.format(new Date())), "MySQL DateTime is NULL");
+            }
+        } catch (ParseException parseException) {
+
+            return org.javatuples.Triplet.with(false, new Date(), ExceptionUtils1.getExceptionDetails(parseException));
+        }
+    }
+
+    public static Triplet<Boolean, Date, String> mySqlDateStringToMySqlDate(String mySqlDateString) {
+
+        try {
+
+            return Triplet.with(true, mySqlDateFormat.parse(mySqlDateString), "");
+
+        } catch (ParseException parseException) {
+
+            return Triplet.with(false, new Date(), ExceptionUtils1.getExceptionDetails(parseException));
+        }
+    }
+
+    public static Triplet<Boolean, Date, String> normalDateStringToDate(String normalDateString) {
+
+        try {
+
+            return Triplet.with(true, normalDateFormat.parse(normalDateString), "");
+
+        } catch (ParseException parseException) {
+
+            return Triplet.with(false, new Date(), ExceptionUtils1.getExceptionDetails(parseException));
         }
     }
 
     public static String dateToMysqlDateTimeString(Date date) {
-        return mysqlDateTimeFormat.format(date);
+
+        return mySqlDateTimeFormat.format(date);
     }
 }

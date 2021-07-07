@@ -24,6 +24,6 @@ public class ButtonUtils {
 
     public static void associateButtonWithTimeStamp(Button buttonDate, Calendar calendar) {
 
-        buttonDate.setText(DateUtils1.normalDateTimeFormatWords.format(calendar.getTime()));
+        buttonDate.setText(DateUtils1.normalDateTimeInWordsFormat.format(calendar.getTime()));
     }
 }
