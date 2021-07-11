@@ -192,6 +192,18 @@ public class DateUtils1 {
         }
     }
 
+    public static Triplet<Boolean, Date, String> normalDateTimeStringToDate(String normalDateTimeString) {
+
+        try {
+
+            return Triplet.with(true, normalDateTimeFormat.parse(normalDateTimeString), "");
+
+        } catch (ParseException parseException) {
+
+            return Triplet.with(false, new Date(), ExceptionUtils1.getExceptionDetails(parseException));
+        }
+    }
+
     public static String dateToMysqlDateTimeString(Date date) {
 
         return mySqlDateTimeFormat.format(date);
